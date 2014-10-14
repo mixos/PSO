@@ -8,6 +8,8 @@ import weka.core.converters.ConverterUtils.DataSource;
 public class Dataset {
 	
 	public static Instances data;
+	public static Integer dimensions;
+	public static Integer classesNo;
 	
 	public static void buildDataset() throws Exception{
 		File[] roots = File.listRoots();
@@ -21,6 +23,9 @@ public class Dataset {
 		if (data.classIndex() == -1){
 		  data.setClassIndex(data.numAttributes() - 1);
 		}
+		dimensions = data.numAttributes()-1;
+		classesNo = data.attribute(data.classIndex()).numValues();
+		
 	}
 
 }
