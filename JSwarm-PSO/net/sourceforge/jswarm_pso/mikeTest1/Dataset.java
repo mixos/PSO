@@ -23,6 +23,7 @@ public class Dataset {
 		if (data.classIndex() == -1){
 		  data.setClassIndex(data.numAttributes() - 1);
 		}
+		//make them static
 		dimensions = data.numAttributes()-1;
 		classesNo = data.attribute(data.classIndex()).numValues();
 		
