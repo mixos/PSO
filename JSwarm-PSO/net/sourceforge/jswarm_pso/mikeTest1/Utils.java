@@ -8,7 +8,9 @@ import weka.core.Instances;
 
 public class Utils {
 	
-	public static double[] minValues(Instances data,int dims, int clNo){
+	public static double[] minValues(Instances data){
+		int dims = Dataset.dimensions;
+		int clNo = Dataset.classesNo;
 		double[] minArray = new double[dims];
 		for(int j=0;j<dims;j++){		
 			if(data.attribute(j).isNumeric()){				
@@ -35,7 +37,9 @@ public class Utils {
 	
 	}
 	
-	public static double[] maxValues(Instances data,int dims, int clNo){
+	public static double[] maxValues(Instances data){
+		int dims = Dataset.dimensions;
+		int clNo = Dataset.classesNo;
 		double[] maxArray = new double[dims];
 		for(int j=0;j<dims;j++){		
 			if(data.attribute(j).isNumeric()){
@@ -60,7 +64,8 @@ public class Utils {
 		return maxFull;
 	}
 	
-	public static HashMap<String, HashMap<String, Double>> buildNominalMap(Instances data,int dims, int clNo){
+	public static HashMap<String, HashMap<String, Double>> buildNominalMap(Instances data){
+		int dims = Dataset.dimensions;
 		HashMap<String,Double> submap = new HashMap<String,Double>();
 		HashMap<String,HashMap<String,Double>> map = new HashMap<String,HashMap<String,Double>>();  
 		double count;

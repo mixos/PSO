@@ -192,7 +192,8 @@ public abstract class Particle {
 		Constructor cons;
 
 		try {
-			cons = cl.getConstructor(Integer.class);//(Class[]) null
+			cons = cl.getConstructor((Class[]) null);
+			//cons = cl.getConstructor(Integer.class);//(Class[]) null
 			//cons = cl.getDeclaredConstructors()[0];
 		} catch (SecurityException e) {
 			throw new RuntimeException(e);
@@ -201,8 +202,8 @@ public abstract class Particle {
 		}
 
 		try {
-			//return cons.newInstance((Object[]) null);
-			return cons.newInstance(d);
+			return cons.newInstance((Object[]) null);
+			//return cons.newInstance(d);
 		} catch (IllegalArgumentException e1) {
 			throw new RuntimeException(e1);
 		} catch (InstantiationException e1) {
