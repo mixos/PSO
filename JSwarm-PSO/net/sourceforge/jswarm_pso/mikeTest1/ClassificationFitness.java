@@ -2,13 +2,13 @@ package sourceforge.jswarm_pso.mikeTest1;
 
 import sourceforge.jswarm_pso.FitnessFunction;
 
-public class MyFitnessFunction extends FitnessFunction {
+public class ClassificationFitness extends FitnessFunction {
 
-	public MyFitnessFunction() {
+	public ClassificationFitness() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MyFitnessFunction(boolean maximize) {
+	public ClassificationFitness(boolean maximize) {
 		super(maximize);
 		// TODO Auto-generated constructor stub
 	}

@@ -2,9 +2,9 @@ package sourceforge.jswarm_pso.mikeTest1;
 
 import sourceforge.jswarm_pso.Particle;
 
-public class MyParticle extends Particle {
+public class ClassificationParticle extends Particle {
 
-	public MyParticle(){
+	public ClassificationParticle(){
 		super(Dataset.dimensions*Dataset.classesNo);
 	}
 
