@@ -54,7 +54,7 @@ public class ClusteringFitness extends FitnessFunction {
 			for(int j=0;j<clNo;j++){
 				double[] ctemp3 = centers.get(j);
 				double[] thePos = new double[dims];
-				for(int d=0;d<=dims;d++){					
+				for(int d=0;d<dims;d++){					
 					if(Dataset.data.attribute(d).isNominal()){
 						thePos[d] = Utils.nMap.get(Dataset.data.attribute(d).name()).get(Dataset.data.instance(i).toString(d));
 					}else{
