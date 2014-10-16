@@ -45,7 +45,26 @@ public class ClusteringFitness extends FitnessFunction {
 		}
 		
 		for(int i=0;i<Dataset.data.numInstances();i++){
-			
+			double min = Double.POSITIVE_INFINITY;
+			int minCl = 1;
+			for(int j=1;j<=clNo;j++){
+				double[] ctemp3 = centers.get(j);
+				double[] thePos = new double[dims];
+				for(int d=0;d<=dims;d++){					
+					if(Dataset.data.attribute(d).isNominal()){
+						thePos[d] = Utils.nMap.get(Dataset.data.attribute(d).name()).get(Dataset.data.instance(i).toString(d));
+					}else{
+						thePos[d] = Dataset.data.instance(i).value(d);
+					}
+				}				
+				double currDist = euclideanDist(ctemp3,thePos);
+				//if(j==1){min = currDist;}
+				if(currDist<min){
+					min=currDist;
+					minCl = j;
+				}
+			}
+			Ck[minCl]++;
 		}
 		
 		return 0;
