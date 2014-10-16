@@ -8,6 +8,8 @@ import weka.core.Instances;
 
 public class Utils {
 	
+	public static HashMap<String,HashMap<String,Double>> nMap;
+	
 	public static double[] minValues(Instances data){
 		int dims = Dataset.dimensions;
 		int clNo = Dataset.classesNo;
@@ -64,7 +66,7 @@ public class Utils {
 		return maxFull;
 	}
 	
-	public static HashMap<String, HashMap<String, Double>> buildNominalMap(Instances data){
+	public static void buildNominalMap(Instances data){
 		int dims = Dataset.dimensions;
 		HashMap<String,Double> submap = new HashMap<String,Double>();
 		HashMap<String,HashMap<String,Double>> map = new HashMap<String,HashMap<String,Double>>();  
@@ -91,7 +93,7 @@ public class Utils {
 				map.put(data.attribute(j).name(), submap);
 			}//if nominal
 		}//atts for
-		return map;
+		nMap=map;
 	}
 
 }

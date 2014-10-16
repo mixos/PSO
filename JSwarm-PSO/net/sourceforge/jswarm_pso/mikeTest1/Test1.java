@@ -14,7 +14,7 @@ public class Test1 {
 
 	public static void main(String[] args) throws Exception {		
 		Dataset.buildDataset();		
-		HashMap<String,HashMap<String,Double>> nMap = Utils.buildNominalMap(Dataset.data);
+		Utils.buildNominalMap(Dataset.data);
 		Swarm swarm = new Swarm(Swarm.DEFAULT_NUMBER_OF_PARTICLES, new MyParticle(), new MyFitnessFunction(false));
 		//System.out.println("dbg");
 		// Min / Max possition
