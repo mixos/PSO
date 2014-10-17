@@ -14,7 +14,7 @@ import weka.core.converters.ConverterUtils.DataSource;
 public class InitClassification {
 	
 	private final static int NUMNER_OF_PARTICLES = 50;
-	public final static int NUMBER_OF_CLUSTERS = 5;
+	//public final static int NUMBER_OF_CLUSTERS = 5;
 
 	public static void main(String[] args) throws Exception {		
 		Dataset.buildDataset();		

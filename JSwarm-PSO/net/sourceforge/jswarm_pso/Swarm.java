@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import sourceforge.jswarm_pso.mikeTest1.Dataset;
+import sourceforge.jswarm_pso.mikeTest1.InitClustering;
 
 /**
  * A swarm of particles
@@ -514,8 +515,12 @@ public class Swarm implements Iterable<Particle> {
 	}
 	
 	public String printClasses(){
+		Throwable t = new Throwable(); 
+		StackTraceElement[] elements = t.getStackTrace();		
+		String callerClassName = elements[1].getClassName();
+		int clnumber = (callerClassName.contains("Classification"))?Dataset.classesNo:InitClustering.NUMBER_OF_CLUSTERS;
 		String cls = "";		
-		for(int j = 1; j <= Dataset.classesNo; j++){
+		for(int j = 1; j <= clnumber; j++){
 			int startPos = (j-1)*Dataset.dimensions;
 			int endPos = startPos+Dataset.dimensions-1;
 			for(int i = startPos; i <= endPos; i++){

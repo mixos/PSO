@@ -19,7 +19,7 @@ public class ClusteringFitness extends FitnessFunction {
 	@Override
 	public double evaluate(double[] position) {
 		//config params
-		int clNo = InitClassification.NUMBER_OF_CLUSTERS;
+		int clNo = InitClustering.NUMBER_OF_CLUSTERS;
 		int dims = Dataset.dimensions;
 		int[] Ck = new int[clNo];
 		double distFromCenter = 0.0;

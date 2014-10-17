@@ -5,7 +5,7 @@ import sourceforge.jswarm_pso.Particle;
 public class ClusteringParticle extends Particle {
 
 	public ClusteringParticle() {
-		super(Dataset.dimensions*InitClassification.NUMBER_OF_CLUSTERS);
+		super(Dataset.dimensions*InitClustering.NUMBER_OF_CLUSTERS);
 	}
 
 }
