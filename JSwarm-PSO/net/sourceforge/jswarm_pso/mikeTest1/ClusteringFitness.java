@@ -92,7 +92,7 @@ public class ClusteringFitness extends FitnessFunction {
 		}
 		
 		double finalValue = distFromCenter/centerDist;
-		return 0;
+		return finalValue;
 	}
 	
 	private double euclideanDist(double[] cpos, double[] dpos){

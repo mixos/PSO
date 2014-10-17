@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import sourceforge.jswarm_pso.mikeTest1.Dataset;
+
 /**
  * A swarm of particles
  * @author Pablo Cingolani <pcingola@users.sourceforge.net>
@@ -509,6 +511,17 @@ public class Swarm implements Iterable<Particle> {
 			stats += "]\nNumber of evaluations: " + numberOfEvaliations + "\n";
 		}
 		return stats;
+	}
+	
+	public String printClasses(){
+		String cls = "";
+		for(int j = 0; j < Dataset.classesNo; j++){
+			for(int i = 0; i < bestPosition.length%Dataset.dimensions; i++){
+				cls += bestPosition[i] + (i < ((bestPosition.length - 1)%Dataset.dimensions) ? ", " : "");
+			}
+			cls += "\n";
+		}
+		return cls;
 	}
 
 	/**

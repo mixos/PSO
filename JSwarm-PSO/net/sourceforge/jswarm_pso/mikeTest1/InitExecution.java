@@ -37,6 +37,7 @@ public class InitExecution {
 
 		// Print results
 		System.out.println(swarm.toStringStats());
+		System.out.println(swarm.printClasses());
 		System.out.println("PSO finished.");
 		
 
