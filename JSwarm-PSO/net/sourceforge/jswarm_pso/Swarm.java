@@ -514,10 +514,12 @@ public class Swarm implements Iterable<Particle> {
 	}
 	
 	public String printClasses(){
-		String cls = "";
-		for(int j = 0; j < Dataset.classesNo; j++){
-			for(int i = 0; i < bestPosition.length%Dataset.dimensions; i++){
-				cls += bestPosition[i] + (i < ((bestPosition.length - 1)%Dataset.dimensions) ? ", " : "");
+		String cls = "";		
+		for(int j = 1; j <= Dataset.classesNo; j++){
+			int startPos = (j-1)*Dataset.dimensions;
+			int endPos = startPos+Dataset.dimensions-1;
+			for(int i = startPos; i <= endPos; i++){
+				cls += bestPosition[i] + ((i < endPos) ? ", " : "");
 			}
 			cls += "\n";
 		}

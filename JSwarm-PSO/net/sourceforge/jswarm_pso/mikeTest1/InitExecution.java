@@ -1,6 +1,9 @@
 package sourceforge.jswarm_pso.mikeTest1;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import sourceforge.jswarm_pso.Particle;
@@ -26,19 +29,28 @@ public class InitExecution {
 		swarm.setMinPosition(minPos);
 		swarm.setInertia(0.95); // Optimization parameters
 
-		int numberOfIterations = 1000;
+		int numberOfIterations = 100;
 		
-		System.out.println("Completed configuration.");
-		System.out.println("PSO Process Started...");
+		System.out.println("Completed configuration.");		
 		// Optimize (and time it)
+		
+		//Start time
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Calendar cal = Calendar.getInstance();
+		System.out.println("PSO Process Started at: "+dateFormat.format(cal.getTime()));
+		System.out.println("Working...");
+		
 		for( int i = 0; i < numberOfIterations; i++ ){
 			swarm.evolve();
 		}
 
+		//End time
+		cal = Calendar.getInstance();
+		System.out.println("PSO finished at: "+dateFormat.format(cal.getTime()));
+		
 		// Print results
 		System.out.println(swarm.toStringStats());
 		System.out.println(swarm.printClasses());
-		System.out.println("PSO finished.");
 		
 
 	}//end main
