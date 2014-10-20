@@ -54,7 +54,7 @@ public class ClusteringFitness extends FitnessFunction {
 		//find how many instances belong to each cluster
 		for(int i=0;i<Dataset.data.numInstances();i++){
 			double min = Double.POSITIVE_INFINITY;
-			int minCl = 1;
+			int minCl = -1;
 			for(int j=0;j<clNo;j++){
 				double[] ctemp3 = centers.get(j);
 				double[] thePos = new double[dims];
