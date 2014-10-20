@@ -16,7 +16,8 @@ public class ClassificationFitness extends FitnessFunction {
 	@Override
 	public double evaluate(double[] position) {	
 		//System.out.println("calculating fitness...");
-			int dimensions = Dataset.data.numAttributes()-1;
+			//int dimensions = Dataset.data.numAttributes()-1;
+			int dimensions = Dataset.dimensions;
 			double[] maxAr = Utils.maxF;
 			//int classesNo = Dataset.data.attribute(Dataset.data.classIndex()).numValues();
 			double sum = 0.0;
