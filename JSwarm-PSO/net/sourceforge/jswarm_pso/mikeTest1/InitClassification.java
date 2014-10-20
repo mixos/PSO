@@ -1,15 +1,10 @@
 package sourceforge.jswarm_pso.mikeTest1;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 
-import sourceforge.jswarm_pso.Particle;
 import sourceforge.jswarm_pso.Swarm;
-import weka.core.Instances;
-import weka.core.converters.ConverterUtils.DataSource;
 
 public class InitClassification {
 	
