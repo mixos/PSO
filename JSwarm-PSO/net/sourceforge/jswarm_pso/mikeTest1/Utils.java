@@ -9,6 +9,8 @@ import weka.core.Instances;
 public class Utils {
 	
 	public static HashMap<String,HashMap<String,Double>> nMap;
+	public static double[] minF; 
+	public static double[] maxF; 
 	
 	public static double[] minValues(Instances data){
 		int dims = Dataset.dimensions;
@@ -34,6 +36,7 @@ public class Utils {
 		for(int k = 0;k<dims*clNo;k++){
 			minFull[k] = minArray[(k%dims)];
 		}
+		minF=minFull;
 		return minFull;
 	
 	
@@ -63,6 +66,7 @@ public class Utils {
 		for(int k = 0;k<dims*clNo;k++){
 			maxFull[k] = maxArray[(k%dims)];
 		}
+		maxF=maxFull;
 		return maxFull;
 	}
 	

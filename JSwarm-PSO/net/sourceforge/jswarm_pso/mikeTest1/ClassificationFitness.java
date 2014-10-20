@@ -17,6 +17,7 @@ public class ClassificationFitness extends FitnessFunction {
 	public double evaluate(double[] position) {	
 		//System.out.println("calculating fitness...");
 			int dimensions = Dataset.data.numAttributes()-1;
+			double[] maxAr = Utils.maxF;
 			//int classesNo = Dataset.data.attribute(Dataset.data.classIndex()).numValues();
 			double sum = 0.0;
 			for(int i=0;i<Dataset.data.numInstances();i++){				
@@ -25,14 +26,14 @@ public class ClassificationFitness extends FitnessFunction {
 				int endPos = (int)startPos+dimensions-1;
 				for(int j=startPos;j<=endPos;j++){
 					if(Dataset.data.attribute(j%dimensions).isNominal()){
-						sum = sum + Utils.nMap.get(Dataset.data.attribute(j%dimensions).name()).get(Dataset.data.instance(i).toString(j%dimensions)) - position[j];
+						sum = Math.pow(sum + Utils.nMap.get(Dataset.data.attribute(j%dimensions).name()).get(Dataset.data.instance(i).toString(j%dimensions)) - position[j],2);
 					}else{
-						sum = sum + Dataset.data.instance(i).value(j%dimensions) - position[j];
+						sum = Math.pow(sum + Dataset.data.instance(i).value(j%dimensions)/maxAr[j%dimensions] - position[j]/maxAr[j],2);
 					}
 				}
 			}
 			//System.out.println("fitness ended.");
-			return sum/Dataset.data.numInstances();			
+			return Math.sqrt(sum/Dataset.data.numInstances());			
 	}
 
 }
