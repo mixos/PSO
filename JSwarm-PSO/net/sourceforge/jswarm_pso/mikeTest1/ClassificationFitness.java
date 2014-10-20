@@ -27,9 +27,9 @@ public class ClassificationFitness extends FitnessFunction {
 				int endPos = (int)startPos+dimensions-1;
 				for(int j=startPos;j<=endPos;j++){
 					if(Dataset.data.attribute(j%dimensions).isNominal()){
-						sum = Math.pow(sum + Utils.nMap.get(Dataset.data.attribute(j%dimensions).name()).get(Dataset.data.instance(i).toString(j%dimensions)) - position[j],2);
+						sum = sum + Math.pow((Utils.nMap.get(Dataset.data.attribute(j%dimensions).name()).get(Dataset.data.instance(i).toString(j%dimensions)) - position[j]),2);
 					}else{
-						sum = Math.pow(sum + Dataset.data.instance(i).value(j%dimensions)/maxAr[j%dimensions] - position[j]/maxAr[j],2);
+						sum = sum + Math.pow((Dataset.data.instance(i).value(j%dimensions)/maxAr[j%dimensions] - position[j]/maxAr[j]),2);
 					}
 				}
 			}

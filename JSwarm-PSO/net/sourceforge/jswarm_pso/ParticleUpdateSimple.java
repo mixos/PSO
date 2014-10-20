@@ -66,7 +66,8 @@ public class ParticleUpdateSimple extends ParticleUpdate {
 					+ rneighborhood[i] * swarm.getNeighborhoodIncrement() * (neighBestPosition[i] - position[i]) // Neighborhood best					
 					+ rglobal[i] * swarm.getGlobalIncrement() * (globalBestPosition[i] - position[i]); // Global best
 			// Update position			
-			position[i] += velocity[i];			
+			position[i] += velocity[i];
+			//System.out.println(i);
 		}
 	}
 }
