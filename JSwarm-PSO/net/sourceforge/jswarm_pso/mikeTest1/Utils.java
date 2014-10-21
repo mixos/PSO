@@ -35,8 +35,9 @@ public class Utils {
 		double[] minFull = new double[dims*clNo];
 		for(int k = 0;k<dims*clNo;k++){
 			minFull[k] = minArray[(k%dims)];
+			//System.out.println(minFull[k]);
 		}
-		//minF=minFull;
+		//minF=minFull;		
 		return minFull;
 	
 	
@@ -65,6 +66,7 @@ public class Utils {
 		double[] maxFull = new double[dims*clNo];
 		for(int k = 0;k<dims*clNo;k++){
 			maxFull[k] = maxArray[(k%dims)];
+			//System.out.println(maxFull[k]);
 		}
 		maxF=maxFull;
 		return maxFull;
