@@ -14,7 +14,8 @@ public class InertiaDecrease extends VariablesUpdate {
 	 * @param swarm : Swarm to update
 	 */
 	public void update(Swarm swarm) {		
-		swarm.setInertia( 0.99 * swarm.getInertia() );
+		swarm.setInertia( 0.9 - ((0.9-0.4)*InitClassification.current_iteration)/InitClassification.numberOfIterations );
+		//swarm.setInertia(0.99 * swarm.getInertia());
 	}
 
 }
