@@ -4,12 +4,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import sourceforge.jswarm_pso.Neighborhood;
+import sourceforge.jswarm_pso.Neighborhood1D;
 import sourceforge.jswarm_pso.Swarm;
 
 public class InitClassification {
 	
 	private final static int NUMNER_OF_PARTICLES = 50;
 	//public final static int NUMBER_OF_CLUSTERS = 5;
+	public static int current_iteration;
+	public static int numberOfIterations;
 
 	public static void main(String[] args) throws Exception {		
 		Dataset.buildDataset();		
@@ -17,14 +21,24 @@ public class InitClassification {
 		Swarm swarm = new Swarm(Swarm.DEFAULT_NUMBER_OF_PARTICLES, new ClassificationParticle(), new ClassificationFitness(false));
 		//Swarm swarm = new Swarm(Swarm.DEFAULT_NUMBER_OF_PARTICLES, new ClusteringParticle(), new ClusteringFitness(false));
 		//System.out.println("dbg");
+		
+		// Use neighborhood
+		Neighborhood neigh = new Neighborhood1D(Swarm.DEFAULT_NUMBER_OF_PARTICLES / 5, true);
+		swarm.setNeighborhood(neigh);
+		swarm.setNeighborhoodIncrement(0.9);
+		
 		// Min / Max possition
 		double[] minPos = Utils.minValues(Dataset.data);
 		double[] maxPos = Utils.maxValues(Dataset.data);
 		swarm.setMaxPosition(maxPos);
 		swarm.setMinPosition(minPos);
-		swarm.setInertia(0.95); // Optimization parameters
+		
+		//optimization params
+		swarm.setInertia(0.95);
+		swarm.setParticleIncrement(0.8);
+		swarm.setGlobalIncrement(0.8);
 
-		int numberOfIterations = 100;
+		numberOfIterations = 100;
 		
 		System.out.println("Completed configuration.");		
 		// Optimize (and time it)
@@ -36,6 +50,7 @@ public class InitClassification {
 		System.out.println("Working...");
 		
 		for( int i = 0; i < numberOfIterations; i++ ){
+			current_iteration = i+1;
 			swarm.evolve();
 		}
 
