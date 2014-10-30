@@ -19,6 +19,7 @@ public class Utils {
 		for(int j=0;j<dims;j++){		
 			if(data.attribute(j).isNumeric()){				
 				double minvalue = data.instance(0).value(j);
+				minArray[j] = minvalue;
 				for(int i=1;i<data.numInstances();i++){
 					if(data.instance(i).value(j)<minvalue){
 						minvalue = data.instance(i).value(j);
@@ -50,6 +51,7 @@ public class Utils {
 		for(int j=0;j<dims;j++){		
 			if(data.attribute(j).isNumeric()){
 				double maxvalue = data.instance(0).value(j);
+				maxArray[j] = maxvalue;
 				for(int i=1;i<data.numInstances();i++){
 					if(data.instance(i).value(j)>maxvalue){
 						maxvalue = data.instance(i).value(j);

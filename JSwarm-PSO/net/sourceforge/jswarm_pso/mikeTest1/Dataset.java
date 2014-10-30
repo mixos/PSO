@@ -16,7 +16,7 @@ public class Dataset {
 		String os = System.getProperty("os.name");
 		String sep = File.separator;
 		String rt = os.startsWith("Windows")?roots[0].toString():File.separator;
-		DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"anneal.arff");
+		DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"waveform-5000.arff");
 		data = source.getDataSet();
 		// setting class attribute if the data format does not provide this information
 		// For example, the XRFF format saves the class attribute information as well
