@@ -21,15 +21,19 @@ public class ClassificationFitness extends FitnessFunction {
 			double[] maxAr = Utils.maxF;
 			//int classesNo = Dataset.data.attribute(Dataset.data.classIndex()).numValues();
 			double sum = 0.0;
-			for(int i=0;i<Dataset.data.numInstances();i++){				
+			for(int i=0;i<InitClassification.numTrainingData;i++){				
 				double classOfInst = Dataset.data.instance(i).classValue();
 				int startPos = (int)classOfInst*dimensions;
 				int endPos = (int)startPos+dimensions-1;				
 				for(int j=startPos;j<=endPos;j++){
 					if(Dataset.data.attribute(j%dimensions).isNominal()){
+						if(Utils.debug){
+							System.out.println("ooop");
+						}
 						sum = sum + Math.pow((Utils.nMap.get(Dataset.data.attribute(j%dimensions).name()).get(Dataset.data.instance(i).toString(j%dimensions)) - position[j]),2);
 					}else{
-						sum = sum + Math.pow((Dataset.data.instance(i).value(j%dimensions)/maxAr[j%dimensions] - position[j]/maxAr[j]),2);
+						//sum = sum + Math.pow((Dataset.data.instance(i).value(j%dimensions)/maxAr[j%dimensions] - position[j]/maxAr[j]),2);
+						sum = sum + Math.pow((Dataset.data.instance(i).value(j%dimensions) - position[j]),2);
 					}
 				}
 			}

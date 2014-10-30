@@ -91,7 +91,9 @@ public class Swarm implements Iterable<Particle> {
 		particleUpdate = new ParticleUpdateSimple(sampleParticle);
 
 		// Set up variablesUpdate strategy (default: VariablesUpdate)
+		
 		variablesUpdate = new VariablesUpdate();
+		
 
 		neighborhood = null;
 		neighborhoodIncrement = 0.0;
@@ -523,6 +525,7 @@ public class Swarm implements Iterable<Particle> {
 		for(int j = 1; j <= clnumber; j++){
 			int startPos = (j-1)*Dataset.dimensions;
 			int endPos = startPos+Dataset.dimensions-1;
+			cls += "Class "+j+": ";
 			for(int i = startPos; i <= endPos; i++){
 				cls += bestPosition[i] + ((i < endPos) ? ", " : "");
 			}

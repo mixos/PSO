@@ -8,6 +8,8 @@ import weka.core.Instances;
 
 public class Utils {
 	
+	public static boolean debug = false;
+	
 	public static HashMap<String,HashMap<String,Double>> nMap;
 	//public static double[] minF; 
 	public static double[] maxF; 
@@ -29,6 +31,9 @@ public class Utils {
 				//System.out.println("########## ATTRIBUTE "+j+" "+data.attribute(j).name()+" #########################");				
 				//System.out.println("Min value of attribute "+j+": "+minvalue);
 				}else{
+					if(Utils.debug){
+						System.out.println("aaap");
+					}
 					minArray[j]= 0;
 				}
 			}
@@ -61,6 +66,9 @@ public class Utils {
 				//System.out.println("########## ATTRIBUTE "+j+" "+data.attribute(j).name()+" #########################");
 				//System.out.println("Max value of attribute "+j+": "+maxvalue);
 				}else{
+					if(Utils.debug){
+						System.out.println("iiip");
+					}
 					maxArray[j]= 1;
 				}
 			}
