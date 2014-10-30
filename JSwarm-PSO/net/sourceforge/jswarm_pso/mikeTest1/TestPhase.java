@@ -26,8 +26,8 @@ public class TestPhase {
 		}
 		
 		//validate
-		//for(int i=InitClassification.numTrainingData;i<Dataset.data.numInstances();i++){
-		for(int i=0;i<Dataset.data.numInstances();i++){
+		for(int i=InitClassification.numTrainingData;i<Dataset.data.numInstances();i++){
+		//for(int i=0;i<Dataset.data.numInstances();i++){
 			int theClass = (int) Dataset.data.instance(i).classValue();			
 			double min = Double.POSITIVE_INFINITY;
 			int minCl = -1;
@@ -56,7 +56,7 @@ public class TestPhase {
 				total++;
 			}
 		}
-		
+		InitClassification.sumOfFold += (total*100)/InitClassification.numTestData;
 		System.out.println(total);
 		System.out.println(Dataset.data.numInstances()-InitClassification.numTrainingData);
 		System.out.println((total*100)/InitClassification.numTestData);

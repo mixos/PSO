@@ -16,13 +16,14 @@ public class InitClassification {
 	public static int numberOfIterations;
 	public static int numTrainingData;
 	public static int numTestData;
+	public static int sumOfFold=0;
 
 	public static void main(String[] args) throws Exception {		
 		Dataset.buildDataset();		
 		Utils.buildNominalMap(Dataset.data);
 		//10-fold validation		
-		numTestData = 	Dataset.data.numInstances();
-		numTrainingData = Dataset.data.numInstances();//-numTestData;
+		numTestData = 	Dataset.data.numInstances()/10;
+		numTrainingData = Dataset.data.numInstances()-numTestData;
 		//
 		Swarm swarm = new Swarm(NUMNER_OF_PARTICLES, new ClassificationParticle(), new ClassificationFitness(false));
 		//Swarm swarm = new Swarm(Swarm.DEFAULT_NUMBER_OF_PARTICLES, new ClusteringParticle(), new ClusteringFitness(false));
@@ -56,7 +57,7 @@ public class InitClassification {
 		swarm.setGlobalIncrement(5);
 		swarm.setVariablesUpdate(new InertiaDecrease());
 
-		numberOfIterations = 100;
+		numberOfIterations = 20;
 		
 		System.out.println("Completed configuration.");		
 		// Optimize (and time it)
@@ -67,10 +68,11 @@ public class InitClassification {
 		System.out.println("PSO Classification Started at: "+dateFormat.format(cal.getTime()));
 		System.out.println("Working...");
 		
+	for(int f=1;f<=10;f++){	
 		for( int i = 0; i < numberOfIterations; i++ ){
 			current_iteration = i+1;
 			swarm.evolve();
-		}
+		}	
 
 		//End time
 		cal = Calendar.getInstance();
@@ -82,6 +84,11 @@ public class InitClassification {
 		
 		TestPhase test = new TestPhase();
 		test.goTest(swarm.getBestPosition());
+		
+		Dataset.foldDataset();
+	}
+	System.out.println("Total: "+sumOfFold/10);
+	
 
 	}//end main
 
