@@ -57,7 +57,7 @@ public class InitClassification {
 		swarm.setGlobalIncrement(5);
 		swarm.setVariablesUpdate(new InertiaDecrease());
 
-		numberOfIterations = 20;
+		numberOfIterations = 500;
 		
 		System.out.println("Completed configuration.");		
 		// Optimize (and time it)

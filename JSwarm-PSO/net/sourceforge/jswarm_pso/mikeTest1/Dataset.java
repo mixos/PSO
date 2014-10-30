@@ -38,15 +38,16 @@ public class Dataset {
 		}
 		
 		//for(int j=link.size()-1;j>=link.size()-(link.size()/10);j--){
-		for(int j=0;j<data.numInstances()/10;j++){
+		for(int j=0;j<(data.numInstances()/10);j++){
 			Instance temp = link.removeFirst();
 			link.add(temp);
 		}
 		
-		data=null;
+		//data=null;
 		for(int k=0;k<link.size();k++){
-			System.out.println("f");
-			data.add(link.removeFirst());
+			Instance temp2 = link.get(0);
+			data.delete(k);
+			data.add(temp2);
 		}
 		
 		if (data.classIndex() == -1){
