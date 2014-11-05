@@ -93,9 +93,9 @@ public class Utils {
 				while(en.hasMoreElements()){
 					count=0.0;
 					String s = (String) en.nextElement();
-					if(s.equals("?")){
+					/*if(s.equals("?")){
 						s = "'?'";
-					}
+					}*/
 					for(int i=0;i<data.numInstances();i++){
 						if(s.equals(data.instance(i).toString(j))){
 							count=count+1;

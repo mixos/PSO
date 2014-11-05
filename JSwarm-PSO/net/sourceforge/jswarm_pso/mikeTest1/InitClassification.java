@@ -53,11 +53,11 @@ public class InitClassification {
 		
 		//optimization params
 		swarm.setInertia(0.9);
-		swarm.setParticleIncrement(2);
-		swarm.setGlobalIncrement(5);
+		swarm.setParticleIncrement(0.8);
+		swarm.setGlobalIncrement(0.9);
 		swarm.setVariablesUpdate(new InertiaDecrease());
 
-		numberOfIterations = 500;
+		numberOfIterations = 100;
 		
 		System.out.println("Completed configuration.");		
 		// Optimize (and time it)
@@ -68,7 +68,7 @@ public class InitClassification {
 		System.out.println("PSO Classification Started at: "+dateFormat.format(cal.getTime()));
 		System.out.println("Working...");
 		
-	for(int f=1;f<=10;f++){	
+	for(int f=1;f<=1;f++){	
 		for( int i = 0; i < numberOfIterations; i++ ){
 			current_iteration = i+1;
 			swarm.evolve();
