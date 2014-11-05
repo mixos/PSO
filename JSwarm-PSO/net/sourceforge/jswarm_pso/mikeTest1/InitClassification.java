@@ -10,7 +10,7 @@ import sourceforge.jswarm_pso.Swarm;
 
 public class InitClassification {
 	
-	private final static int NUMNER_OF_PARTICLES = 50;
+	private final static int NUMNER_OF_PARTICLES = 100;
 	//public final static int NUMBER_OF_CLUSTERS = 5;
 	public static int current_iteration;
 	public static int numberOfIterations;
@@ -22,7 +22,7 @@ public class InitClassification {
 		Dataset.buildDataset();		
 		Utils.buildNominalMap(Dataset.data);
 		//10-fold validation		
-		numTestData = 	Dataset.data.numInstances()/10;
+		numTestData = 	Dataset.data.numInstances()/20;
 		numTrainingData = Dataset.data.numInstances()-numTestData;
 		//
 		Swarm swarm = new Swarm(NUMNER_OF_PARTICLES, new ClassificationParticle(), new ClassificationFitness(false));
@@ -53,11 +53,11 @@ public class InitClassification {
 		
 		//optimization params
 		swarm.setInertia(0.9);
-		swarm.setParticleIncrement(0.8);
-		swarm.setGlobalIncrement(0.9);
+		swarm.setParticleIncrement(0.1);
+		swarm.setGlobalIncrement(0.2);
 		swarm.setVariablesUpdate(new InertiaDecrease());
 
-		numberOfIterations = 100;
+		numberOfIterations = 500;
 		
 		System.out.println("Completed configuration.");		
 		// Optimize (and time it)
