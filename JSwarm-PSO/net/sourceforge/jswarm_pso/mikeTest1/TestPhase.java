@@ -28,22 +28,23 @@ public class TestPhase {
 		//validate
 		for(int i=InitClassification.numTrainingData;i<Dataset.data.numInstances();i++){
 		//for(int i=0;i<Dataset.data.numInstances();i++){
-			int theClass = (int) Dataset.data.instance(i).classValue();			
+			int theClass = (int) Dataset.data.instance(i).classValue();
+			double[] thePos = new double[dims];
+			for(int d=0;d<dims;d++){					
+				if(Dataset.data.attribute(d).isNominal()){
+					if(Utils.debug){
+						System.out.println("eeep");
+					}
+					thePos[d] = Utils.nMap.get(Dataset.data.attribute(d).name()).get(Dataset.data.instance(i).toString(d));
+				}else{
+					thePos[d] = Dataset.data.instance(i).value(d);
+				}
+			}
+			
 			double min = Double.POSITIVE_INFINITY;
 			int minCl = -1;
 			for(int j=0;j<clNo;j++){
-				double[] ctemp3 = centers.get(j);
-				double[] thePos = new double[dims];
-				for(int d=0;d<dims;d++){					
-					if(Dataset.data.attribute(d).isNominal()){
-						if(Utils.debug){
-							System.out.println("eeep");
-						}
-						thePos[d] = Utils.nMap.get(Dataset.data.attribute(d).name()).get(Dataset.data.instance(i).toString(d));
-					}else{
-						thePos[d] = Dataset.data.instance(i).value(d);
-					}
-				}				
+				double[] ctemp3 = centers.get(j);												
 				double currDist = euclideanDist(ctemp3,thePos);
 				if(currDist<min){
 					min=currDist;
