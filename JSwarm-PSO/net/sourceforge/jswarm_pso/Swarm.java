@@ -61,6 +61,8 @@ public class Swarm implements Iterable<Particle> {
 	double neighborhoodIncrement;
 	/** A collection used for 'Iterable' interface */
 	ArrayList<Particle> particlesList;
+	
+	double wind[];
 
 	//-------------------------------------------------------------------------
 	// Constructors
@@ -88,7 +90,9 @@ public class Swarm implements Iterable<Particle> {
 		bestParticleIndex = -1;
 
 		// Set up particle update strategy (default: ParticleUpdateSimple) 
-		particleUpdate = new ParticleUpdateSimple(sampleParticle);
+		wind = new double[sampleParticle.getDimension()];
+		//particleUpdate = new ParticleUpdateSimple(sampleParticle);
+		particleUpdate = new ParticleUpdateWind(sampleParticle);
 
 		// Set up variablesUpdate strategy (default: VariablesUpdate)
 		
@@ -158,6 +162,14 @@ public class Swarm implements Iterable<Particle> {
 		update(); // Update positions and velocities
 
 		variablesUpdate.update(this);
+	}
+	
+	public double[] getWind() {
+		return wind;
+	}
+	
+	public void setWind(double[] wind){
+		this.wind = wind;
 	}
 
 	public double getBestFitness() {

@@ -10,7 +10,7 @@ package sourceforge.jswarm_pso;
  * 
  * @author Pablo Cingolani <pcingola@users.sourceforge.net>
  */
-public class ParticleUpdateSimple extends ParticleUpdate {
+public class ParticleUpdateWind extends ParticleUpdate {
 
 	/** Random vector for local update */
 	double rlocal[];
@@ -19,16 +19,23 @@ public class ParticleUpdateSimple extends ParticleUpdate {
 	/** Random vector for neighborhood update */
 	double rneighborhood[];
 	
+	//wind dispersion
+	double rwindp[];
+	double rwindm[];
+	double wind[];
 
 	/**
 	 * Constructor 
 	 * @param particle : Sample of particles that will be updated later
 	 */
-	public ParticleUpdateSimple(Particle particle) {
+	public ParticleUpdateWind(Particle particle) {
 		super(particle);
 		rlocal = new double[particle.getDimension()];
 		rglobal = new double[particle.getDimension()];
-		rneighborhood = new double[particle.getDimension()];		
+		rneighborhood = new double[particle.getDimension()];
+		rwindp = new double[particle.getDimension()];
+		rwindm = new double[particle.getDimension()];
+		wind = new double[particle.getDimension()];
 	}
 
 	/** 
@@ -41,8 +48,11 @@ public class ParticleUpdateSimple extends ParticleUpdate {
 		for (i = 0; i < dim; i++) {
 			rlocal[i] = Math.random();
 			rglobal[i] = Math.random();
-			rneighborhood[i] = Math.random();			
-		}		
+			rneighborhood[i] = Math.random();
+			rwindp[i] = Math.random();
+			rwindm[i] = Math.random();
+		}
+		wind = swarm.getWind();
 	}
 
 	/** This method is called at the end of each iteration */
@@ -67,9 +77,10 @@ public class ParticleUpdateSimple extends ParticleUpdate {
 					+ rneighborhood[i] * swarm.getNeighborhoodIncrement() * (neighBestPosition[i] - position[i]) // Neighborhood best					
 					+ rglobal[i] * swarm.getGlobalIncrement() * (globalBestPosition[i] - position[i]); // Global best
 			// Update position
-			
-			position[i] += velocity[i];
+			wind[i] = wind[i]+rwindp[i]-rwindm[i];
+			position[i] += velocity[i] + wind[i];
 			//System.out.println(i);
-		}		
+		}
+		swarm.setWind(wind);
 	}
 }
