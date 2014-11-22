@@ -51,8 +51,9 @@ public class ParticleUpdateWind extends ParticleUpdate {
 			rneighborhood[i] = Math.random();
 			rwindp[i] = Math.random();
 			rwindm[i] = Math.random();
+			wind[i] = Math.random();
 		}
-		wind = swarm.getWind();
+		swarm.setWind(wind);
 	}
 
 	/** This method is called at the end of each iteration */
@@ -70,6 +71,7 @@ public class ParticleUpdateWind extends ParticleUpdate {
 		double neighBestPosition[] = swarm.getNeighborhoodBestPosition(particle);
 
 		// Update velocity and position
+		wind = swarm.getWind();
 		for (int i = 0; i < position.length; i++) {
 			// Update velocity
 			velocity[i] = swarm.getInertia() * velocity[i] // Inertia
