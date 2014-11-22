@@ -18,6 +18,10 @@ public class ParticleUpdateSimple extends ParticleUpdate {
 	double rglobal[];
 	/** Random vector for neighborhood update */
 	double rneighborhood[];
+	
+	//wind dispersion
+	double rwindp[];
+	double rwindm[];
 
 	/**
 	 * Constructor 
@@ -28,6 +32,8 @@ public class ParticleUpdateSimple extends ParticleUpdate {
 		rlocal = new double[particle.getDimension()];
 		rglobal = new double[particle.getDimension()];
 		rneighborhood = new double[particle.getDimension()];
+		rwindp = new double[particle.getDimension()];
+		rwindm = new double[particle.getDimension()];
 	}
 
 	/** 
@@ -66,7 +72,7 @@ public class ParticleUpdateSimple extends ParticleUpdate {
 					+ rneighborhood[i] * swarm.getNeighborhoodIncrement() * (neighBestPosition[i] - position[i]) // Neighborhood best					
 					+ rglobal[i] * swarm.getGlobalIncrement() * (globalBestPosition[i] - position[i]); // Global best
 			// Update position			
-			position[i] += velocity[i];
+			position[i] += velocity[i]+rwindp[i]-rwindm[i];
 			//System.out.println(i);
 		}
 	}
