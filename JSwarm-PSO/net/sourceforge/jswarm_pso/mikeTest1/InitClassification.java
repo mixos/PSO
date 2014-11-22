@@ -10,7 +10,7 @@ import sourceforge.jswarm_pso.Swarm;
 
 public class InitClassification {
 	
-	private final static int NUMNER_OF_PARTICLES = 100;
+	private final static int NUMNER_OF_PARTICLES = 50;
 	//public final static int NUMBER_OF_CLUSTERS = 5;
 	public static int current_iteration;
 	public static int numberOfIterations;
@@ -22,7 +22,7 @@ public class InitClassification {
 		Dataset.buildDataset();		
 		Utils.buildNominalMap(Dataset.data);
 		//10-fold validation		
-		numTestData = 	Dataset.data.numInstances()/20;
+		numTestData = 	Dataset.data.numInstances()/10;
 		numTrainingData = Dataset.data.numInstances()-numTestData;
 		//
 		Swarm swarm = new Swarm(NUMNER_OF_PARTICLES, new ClassificationParticle(), new ClassificationFitness(false));
@@ -57,7 +57,7 @@ public class InitClassification {
 		swarm.setGlobalIncrement(0.2);
 		swarm.setVariablesUpdate(new InertiaDecrease());
 
-		numberOfIterations = 500;
+		numberOfIterations = 1000;
 		
 		System.out.println("Completed configuration.");		
 		// Optimize (and time it)
@@ -68,7 +68,8 @@ public class InitClassification {
 		System.out.println("PSO Classification Started at: "+dateFormat.format(cal.getTime()));
 		System.out.println("Working...");
 		
-	for(int f=1;f<=1;f++){	
+	int folds = 5;	
+	for(int f=1;f<=folds;f++){	
 		for( int i = 0; i < numberOfIterations; i++ ){
 			current_iteration = i+1;
 			swarm.evolve();
@@ -85,9 +86,9 @@ public class InitClassification {
 		TestPhase test = new TestPhase();
 		test.goTest(swarm.getBestPosition());
 		
-		Dataset.foldDataset();
+		//Dataset.foldDataset();
 	}
-	System.out.println("Total: "+sumOfFold/10);
+	System.out.println("Total: "+sumOfFold/folds);
 	
 
 	}//end main

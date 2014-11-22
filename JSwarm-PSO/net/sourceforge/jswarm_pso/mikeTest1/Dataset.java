@@ -19,8 +19,9 @@ public class Dataset {
 		String sep = File.separator;
 		String rt = os.startsWith("Windows")?roots[0].toString():File.separator;
 		//DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"waveform-5000.arff");
-		DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"sonar.arff");		
+		//DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"sonar.arff");		
 		//DataSource source = new DataSource("D:\\UOA\\Diplwmatiki\\PSO\\arffFiles\\UCI\\waveform-5000.arff");
+		DataSource source = new DataSource("C:\\Users\\mike\\Downloads\\PSO\\WekaFiles\\UCI\\sonar.arff");
 		data = source.getDataSet();
 		// setting class attribute if the data format does not provide this information
 		// For example, the XRFF format saves the class attribute information as well
