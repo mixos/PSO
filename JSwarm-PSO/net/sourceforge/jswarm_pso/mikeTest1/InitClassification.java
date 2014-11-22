@@ -75,7 +75,7 @@ public class InitClassification {
 			swarm.evolve();
 		}	
 
-		//End time
+		//End time.
 		cal = Calendar.getInstance();
 		System.out.println("PSO Classification finished at: "+dateFormat.format(cal.getTime()));
 		
