@@ -17,11 +17,11 @@ public class InertiaDecrease extends VariablesUpdate {
 		swarm.setInertia( 0.9 - ((0.9-0.4)*InitClassification.current_iteration)/InitClassification.numberOfIterations );
 		//swarm.setInertia(0.99 * swarm.getInertia());
 		
-		//swarm.setGlobalIncrement(1 - ((1-0.1)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
-		//swarm.setParticleIncrement(0.1 + ((1-0.1)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
+		swarm.setGlobalIncrement(1 - ((1-0.1)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
+		swarm.setParticleIncrement(0.1 + ((1-0.1)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
 		
-		swarm.setGlobalIncrement(swarm.getGlobalIncrement()-0.1);
-		swarm.setParticleIncrement(swarm.getParticleIncrement()+0.1);
+		//swarm.setGlobalIncrement(swarm.getGlobalIncrement()-0.1);
+		//swarm.setParticleIncrement(swarm.getParticleIncrement()+0.1);
 		
 		//debug
 		if(Utils.debug){

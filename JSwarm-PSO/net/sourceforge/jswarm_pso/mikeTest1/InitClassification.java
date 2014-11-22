@@ -53,8 +53,8 @@ public class InitClassification {
 		
 		//optimization params
 		swarm.setInertia(0.9);
-		swarm.setParticleIncrement(3);
-		swarm.setGlobalIncrement(5);
+		swarm.setParticleIncrement(0.5);
+		swarm.setGlobalIncrement(0.8);
 		swarm.setVariablesUpdate(new InertiaDecrease());
 
 		numberOfIterations = 20;
