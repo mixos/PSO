@@ -68,7 +68,7 @@ public class InitClassification {
 		System.out.println("PSO Classification Started at: "+dateFormat.format(cal.getTime()));
 		System.out.println("Working...");
 		
-	int folds = 5;	
+	int folds = 3;	
 	for(int f=1;f<=folds;f++){	
 		for( int i = 0; i < numberOfIterations; i++ ){
 			current_iteration = i+1;
