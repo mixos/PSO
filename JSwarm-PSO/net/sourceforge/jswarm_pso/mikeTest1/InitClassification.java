@@ -25,6 +25,8 @@ public class InitClassification {
 		numTestData = 	Dataset.data.numInstances()/10;
 		numTrainingData = Dataset.data.numInstances()-numTestData;
 		//
+		int folds = 3;	
+		for(int f=1;f<=folds;f++){
 		Swarm swarm = new Swarm(NUMNER_OF_PARTICLES, new ClassificationParticle(), new ClassificationFitness(false));
 		//Swarm swarm = new Swarm(Swarm.DEFAULT_NUMBER_OF_PARTICLES, new ClusteringParticle(), new ClusteringFitness(false));
 		//System.out.println("dbg");
@@ -57,7 +59,7 @@ public class InitClassification {
 		swarm.setGlobalIncrement(0.9);
 		swarm.setVariablesUpdate(new InertiaDecrease());
 
-		numberOfIterations = 500;
+		numberOfIterations = 100;
 		
 		System.out.println("Completed configuration.");		
 		// Optimize (and time it)
@@ -68,8 +70,8 @@ public class InitClassification {
 		System.out.println("PSO Classification Started at: "+dateFormat.format(cal.getTime()));
 		System.out.println("Working...");
 		
-	int folds = 10;	
-	for(int f=1;f<=folds;f++){	
+	//int folds = 1;	
+	//for(int f=1;f<=folds;f++){	
 		for( int i = 0; i < numberOfIterations; i++ ){
 			current_iteration = i+1;
 			swarm.evolve();
@@ -87,7 +89,7 @@ public class InitClassification {
 		test.goTest(swarm.getBestPosition());
 		
 		Dataset.foldDataset();
-	}
+	}//end folds
 	System.out.println("Total: "+sumOfFold/folds);
 	
 
