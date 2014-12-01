@@ -94,7 +94,7 @@ public class Utils {
 					count=0.0;
 					String s = (String) en.nextElement();
 					if(s.equals("?")){
-						s = "'?'";
+						s = "'?'";						
 					}
 					for(int i=0;i<data.numInstances();i++){
 						if(s.equals(data.instance(i).toString(j))){
