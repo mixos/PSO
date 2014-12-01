@@ -58,9 +58,9 @@ public class TestPhase {
 			}
 		}
 		InitClassification.sumOfFold += (total*100)/InitClassification.numTestData;
-		System.out.println(total);
-		System.out.println(Dataset.data.numInstances()-InitClassification.numTrainingData);
-		System.out.println((total*100)/InitClassification.numTestData);
+		System.out.println(total+" correctly classified instances");
+		System.out.println("out of "+(Dataset.data.numInstances()-InitClassification.numTrainingData)+" test instances.");
+		System.out.println("Current phase sum: "+((total*100)/InitClassification.numTestData)+"%");
 		
 	}//end goTest
 	

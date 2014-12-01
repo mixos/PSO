@@ -90,7 +90,7 @@ public class InitClassification {
 		
 		Dataset.foldDataset();
 	}//end folds
-	System.out.println("Total: "+sumOfFold/folds);
+	System.out.println("Total: "+(sumOfFold/folds)+"%");
 	
 
 	}//end main
