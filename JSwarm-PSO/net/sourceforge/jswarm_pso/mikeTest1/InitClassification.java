@@ -25,7 +25,7 @@ public class InitClassification {
 		numTestData = 	Dataset.data.numInstances()/10;
 		numTrainingData = Dataset.data.numInstances()-numTestData;
 		//
-		int folds = 3;	
+		int folds = 1;	
 		for(int f=1;f<=folds;f++){
 		Swarm swarm = new Swarm(NUMNER_OF_PARTICLES, new ClassificationParticle(), new ClassificationFitness(false));
 		//Swarm swarm = new Swarm(Swarm.DEFAULT_NUMBER_OF_PARTICLES, new ClusteringParticle(), new ClusteringFitness(false));
