@@ -20,13 +20,38 @@ public class InitClassification {
 
 	public static void main(String[] args) throws Exception {
 		//args[0]=filepath - args[1]=inertiaDecrease - args[2]=particleIncrement
+		//args[3]=inertia value - args[4]=personal value - args[5]=social value
+		//args[6]=iterations - args[7]=folds
+		//config some args
+		double inert = 0.9;
+		double pers = 0.3;
+		double socl = 0.9;
+		Integer itons = 100;
+		Integer fofolds = 10;
+		if(args[3]!=null && !args[3].isEmpty()){
+			inert = Double.parseDouble(args[3]);
+		}
+		if(args[4]!=null && !args[4].isEmpty()){
+			pers = Double.parseDouble(args[4]);
+		}
+		if(args[5]!=null && !args[5].isEmpty()){
+			socl = Double.parseDouble(args[5]);
+		}
+		if(args[6]!=null && !args[6].isEmpty()){
+			itons = Integer.parseInt(args[6]);
+		}
+		if(args[7]!=null && !args[7].isEmpty()){
+			fofolds = Integer.parseInt(args[7]);
+		}
+		//
+		
 		Dataset.buildDataset(args[0]);		
 		Utils.buildNominalMap(Dataset.data);
 		//10-fold validation		
 		numTestData = 	Dataset.data.numInstances()/10;
 		numTrainingData = Dataset.data.numInstances()-numTestData;
 		//
-		int folds = 1;	
+		int folds = fofolds;	
 		for(int f=1;f<=folds;f++){
 		Swarm swarm = new Swarm(NUMNER_OF_PARTICLES, new ClassificationParticle(), new ClassificationFitness(false));
 		//Swarm swarm = new Swarm(Swarm.DEFAULT_NUMBER_OF_PARTICLES, new ClusteringParticle(), new ClusteringFitness(false));
@@ -55,12 +80,12 @@ public class InitClassification {
 		}
 		
 		//optimization params
-		swarm.setInertia(0.9);
-		swarm.setParticleIncrement(0.3);
-		swarm.setGlobalIncrement(0.9);
+		swarm.setInertia(inert);
+		swarm.setParticleIncrement(pers);
+		swarm.setGlobalIncrement(socl);
 		swarm.setVariablesUpdate(new InertiaDecrease(args[1],args[2]));
 
-		numberOfIterations = 500;
+		numberOfIterations = itons;
 		
 		System.out.println("Completed configuration.");		
 		// Optimize (and time it)
