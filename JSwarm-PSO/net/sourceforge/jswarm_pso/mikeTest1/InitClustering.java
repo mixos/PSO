@@ -16,7 +16,7 @@ public class InitClustering {
 	public static int numberOfIterations;
 
 	public static void main(String[] args) throws Exception {		
-		Dataset.buildDataset();		
+		Dataset.buildDataset(args[0]);		
 		Utils.buildNominalMap(Dataset.data);		
 		Swarm swarm = new Swarm(Swarm.DEFAULT_NUMBER_OF_PARTICLES, new ClusteringParticle(), new ClusteringFitness(false));
 		//System.out.println("dbg");

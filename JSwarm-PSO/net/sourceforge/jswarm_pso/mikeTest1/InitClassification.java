@@ -19,7 +19,7 @@ public class InitClassification {
 	public static int sumOfFold=0;
 
 	public static void main(String[] args) throws Exception {		
-		Dataset.buildDataset();		
+		Dataset.buildDataset(args[0]);		
 		Utils.buildNominalMap(Dataset.data);
 		//10-fold validation		
 		numTestData = 	Dataset.data.numInstances()/10;
