@@ -43,7 +43,7 @@ public class InitClassification {
 		if(args[7]!=null && !args[7].isEmpty()){
 			fofolds = Integer.parseInt(args[7]);
 		}
-		//
+		//end config
 		
 		Dataset.buildDataset(args[0]);		
 		Utils.buildNominalMap(Dataset.data);
