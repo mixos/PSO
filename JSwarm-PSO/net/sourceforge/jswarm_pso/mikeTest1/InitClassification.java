@@ -18,7 +18,8 @@ public class InitClassification {
 	public static int numTestData;
 	public static int sumOfFold=0;
 
-	public static void main(String[] args) throws Exception {		
+	public static void main(String[] args) throws Exception {
+		//args[0]=filepath - args[1]=inertiaDecrease - args[2]=particleIncrement
 		Dataset.buildDataset(args[0]);		
 		Utils.buildNominalMap(Dataset.data);
 		//10-fold validation		
@@ -57,7 +58,7 @@ public class InitClassification {
 		swarm.setInertia(0.9);
 		swarm.setParticleIncrement(0.3);
 		swarm.setGlobalIncrement(0.9);
-		swarm.setVariablesUpdate(new InertiaDecrease(args[1]));
+		swarm.setVariablesUpdate(new InertiaDecrease(args[1],args[2]));
 
 		numberOfIterations = 500;
 		
