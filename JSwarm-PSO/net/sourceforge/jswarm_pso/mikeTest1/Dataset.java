@@ -16,15 +16,15 @@ public class Dataset {
 	public static void buildDataset(String arffpath) throws Exception{
 		DataSource source;
 		if("".equals(arffpath)){
-		File[] roots = File.listRoots();
-		String os = System.getProperty("os.name");
-		String sep = File.separator;
-		String rt = os.startsWith("Windows")?roots[0].toString():File.separator;
-		//DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"waveform-5000.arff");
-		//DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"sonar.arff");
-		source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"lymph.arff");
-		//DataSource source = new DataSource("D:\\UOA\\Diplwmatiki\\PSO\\arffFiles\\UCI\\waveform-5000.arff");
-		//DataSource source = new DataSource("C:\\Users\\mike\\Downloads\\PSO\\WekaFiles\\UCI\\sonar.arff");
+			File[] roots = File.listRoots();
+			String os = System.getProperty("os.name");
+			String sep = File.separator;
+			String rt = os.startsWith("Windows")?roots[0].toString():File.separator;
+			//DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"waveform-5000.arff");
+			//DataSource source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"sonar.arff");
+			source = new DataSource(rt+"Users"+sep+"mchristopoulos"+sep+"Downloads"+sep+"PSO"+sep+"datasets-UCI"+sep+"UCI"+sep+"lymph.arff");
+			//DataSource source = new DataSource("D:\\UOA\\Diplwmatiki\\PSO\\arffFiles\\UCI\\waveform-5000.arff");
+			//DataSource source = new DataSource("C:\\Users\\mike\\Downloads\\PSO\\WekaFiles\\UCI\\sonar.arff");
 		}else{
 			if(arffpath.endsWith(".arff")){
 				source = new DataSource(arffpath);
