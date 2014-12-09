@@ -10,7 +10,7 @@ import sourceforge.jswarm_pso.Swarm;
 
 public class InitClassification {
 	
-	private final static int NUMNER_OF_PARTICLES = 50;
+	private static int NUMNER_OF_PARTICLES = 50;
 	//public final static int NUMBER_OF_CLUSTERS = 5;
 	public static int current_iteration;
 	public static int numberOfIterations;
@@ -21,7 +21,7 @@ public class InitClassification {
 	public static void main(String[] args) throws Exception {
 		//args[0]=filepath - args[1]=inertiaDecrease - args[2]=particleIncrement
 		//args[3]=inertia value - args[4]=personal value - args[5]=social value
-		//args[6]=iterations - args[7]=folds
+		//args[6]=iterations - args[7]=folds - args[8]=numberParticles
 		//config some args
 		double inert = 0.9;
 		double pers = 0.3;
@@ -42,6 +42,9 @@ public class InitClassification {
 		}
 		if(args[7]!=null && !args[7].isEmpty()){
 			fofolds = Integer.parseInt(args[7]);
+		}
+		if(args[8]!=null && !args[8].isEmpty()){
+			NUMNER_OF_PARTICLES=Integer.parseInt(args[8]);
 		}
 		//end config
 		
