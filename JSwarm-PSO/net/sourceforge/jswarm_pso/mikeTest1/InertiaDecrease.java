@@ -4,10 +4,10 @@ import sourceforge.jswarm_pso.Swarm;
 import sourceforge.jswarm_pso.VariablesUpdate;
 
 public class InertiaDecrease extends VariablesUpdate {
-	String particleIncrement="";
-	String inertiaDecrease="";
+	boolean particleIncrement=false;
+	boolean inertiaDecrease=false;
 
-	public InertiaDecrease(String inertiaDec, String particleInc) {
+	public InertiaDecrease(boolean inertiaDec, boolean particleInc) {
 		super();
 		this.inertiaDecrease = inertiaDec;
 		this.particleIncrement = particleInc;		
@@ -18,7 +18,7 @@ public class InertiaDecrease extends VariablesUpdate {
 	 * @param swarm : Swarm to update
 	 */
 	public void update(Swarm swarm) {
-		if(inertiaDecrease.equalsIgnoreCase("true")){
+		if(inertiaDecrease){
 			swarm.setInertia( 0.9 - ((0.9-0.4)*InitClassification.current_iteration)/InitClassification.numberOfIterations );
 		}
 		
@@ -27,7 +27,7 @@ public class InertiaDecrease extends VariablesUpdate {
 		//swarm.setParticleIncrement(0.1 + ((1-0.1)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
 		//swarm.setGlobalIncrement(swarm.getGlobalIncrement()+0.1);
 		
-		if(particleIncrement.equalsIgnoreCase("true")){
+		if(particleIncrement){
 			swarm.setParticleIncrement(0.9 - ((0.9-0.3)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
 		}
 		

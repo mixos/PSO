@@ -29,6 +29,12 @@ public class InitClassification {
 		Integer itons = 100;
 		Integer fofolds = 10;
 		String apath = null;
+		boolean inertia = false;
+		boolean localFix = false;
+	if(args.length==2){
+		inertia = Boolean.parseBoolean(args[0]);
+		localFix = Boolean.parseBoolean(args[1]);
+	}
 	if(args.length>2){
 		apath = args[2];
 		if(args[3]!=null && !args[3].isEmpty()){
@@ -90,7 +96,7 @@ public class InitClassification {
 		swarm.setInertia(inert);
 		swarm.setParticleIncrement(pers);
 		swarm.setGlobalIncrement(socl);
-		swarm.setVariablesUpdate(new InertiaDecrease(args[0],args[1]));
+		swarm.setVariablesUpdate(new InertiaDecrease(inertia,localFix));
 
 		numberOfIterations = itons;
 		
