@@ -15,7 +15,7 @@ public class Dataset {
 	
 	public static void buildDataset(String arffpath) throws Exception{
 		DataSource source;
-		if("".equals(arffpath)){
+		if(arffpath==null || arffpath.isEmpty()){
 			File[] roots = File.listRoots();
 			String os = System.getProperty("os.name");
 			String sep = File.separator;

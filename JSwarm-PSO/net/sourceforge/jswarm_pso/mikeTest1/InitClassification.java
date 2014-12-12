@@ -28,6 +28,9 @@ public class InitClassification {
 		double socl = 0.9;
 		Integer itons = 100;
 		Integer fofolds = 10;
+		String apath = null;
+	if(args.length>2){
+		apath = args[2];
 		if(args[3]!=null && !args[3].isEmpty()){
 			inert = Double.parseDouble(args[3]);
 		}
@@ -47,8 +50,9 @@ public class InitClassification {
 			NUMNER_OF_PARTICLES=Integer.parseInt(args[8]);
 		}
 		//end config
+	}
 		
-		Dataset.buildDataset(args[2]);		
+		Dataset.buildDataset(apath);		
 		Utils.buildNominalMap(Dataset.data);
 		//10-fold validation		
 		numTestData = 	Dataset.data.numInstances()/10;
