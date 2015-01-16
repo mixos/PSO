@@ -26,7 +26,7 @@ public class InitClassification {
 		double inert = 0.9;
 		double pers = 0.3;
 		double socl = 0.9;
-		Integer itons = 100;
+		Integer itons = 200;
 		Integer fofolds = 10;
 		String apath = null;
 		boolean inertia = false;
@@ -73,7 +73,7 @@ public class InitClassification {
 		// Use neighborhood
 		//Neighborhood neigh = new Neighborhood1D(Swarm.DEFAULT_NUMBER_OF_PARTICLES / 5, true);
 		//swarm.setNeighborhood(neigh);
-		//swarm.setNeighborhoodIncrement(0.9);
+		//swarm.setNeighborhoodIncrement(0.0);
 		
 		// Min / Max possition
 		double[] minPos = Utils.minValues(Dataset.data);

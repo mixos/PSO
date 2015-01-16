@@ -27,8 +27,10 @@ public class InertiaDecrease extends VariablesUpdate {
 		//swarm.setParticleIncrement(0.1 + ((1-0.1)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
 		//swarm.setGlobalIncrement(swarm.getGlobalIncrement()+0.1);
 		
-		if(particleIncrement){
-			swarm.setParticleIncrement(0.9 - ((0.9-0.3)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
+		if(particleIncrement && InitClassification.current_iteration>=150){
+		//if(particleIncrement){
+			swarm.setParticleIncrement(0.3 + ((0.9-0.3)*InitClassification.current_iteration)/InitClassification.numberOfIterations);
+			//swarm.setNeighborhoodIncrement(0.8);
 		}
 		
 		//debug
