@@ -71,9 +71,9 @@ public class InitClassification {
 		//System.out.println("dbg");
 		
 		// Use neighborhood
-		//Neighborhood neigh = new Neighborhood1D(Swarm.DEFAULT_NUMBER_OF_PARTICLES / 5, true);
-		//swarm.setNeighborhood(neigh);
-		//swarm.setNeighborhoodIncrement(0.0);
+		Neighborhood neigh = new Neighborhood1D(Swarm.DEFAULT_NUMBER_OF_PARTICLES / 5, true);
+		swarm.setNeighborhood(neigh);
+		swarm.setNeighborhoodIncrement(0.0);
 		
 		// Min / Max possition
 		double[] minPos = Utils.minValues(Dataset.data);
