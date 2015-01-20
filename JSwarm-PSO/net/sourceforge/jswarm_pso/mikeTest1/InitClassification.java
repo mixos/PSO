@@ -25,35 +25,37 @@ public class InitClassification {
 		//config some args
 		double inert = 0.9;
 		double pers = 0.3;
+		boolean lbest_opt = false;
 		double socl = 0.9;
 		Integer itons = 200;
 		Integer fofolds = 10;
 		String apath = null;
 		boolean inertia = false;
 		boolean localFix = false;
-	if(args.length==2){
+	if(args.length==3){
 		inertia = Boolean.parseBoolean(args[0]);
 		localFix = Boolean.parseBoolean(args[1]);
+		lbest_opt = Boolean.parseBoolean(args[2]);
 	}
-	if(args.length>2){
-		apath = args[2];
-		if(args[3]!=null && !args[3].isEmpty()){
-			inert = Double.parseDouble(args[3]);
-		}
+	if(args.length>3){
+		apath = args[3];
 		if(args[4]!=null && !args[4].isEmpty()){
-			pers = Double.parseDouble(args[4]);
+			inert = Double.parseDouble(args[4]);
 		}
 		if(args[5]!=null && !args[5].isEmpty()){
-			socl = Double.parseDouble(args[5]);
+			pers = Double.parseDouble(args[5]);
 		}
 		if(args[6]!=null && !args[6].isEmpty()){
-			itons = Integer.parseInt(args[6]);
+			socl = Double.parseDouble(args[6]);
 		}
 		if(args[7]!=null && !args[7].isEmpty()){
-			fofolds = Integer.parseInt(args[7]);
+			itons = Integer.parseInt(args[7]);
 		}
 		if(args[8]!=null && !args[8].isEmpty()){
-			NUMNER_OF_PARTICLES=Integer.parseInt(args[8]);
+			fofolds = Integer.parseInt(args[8]);
+		}
+		if(args[9]!=null && !args[9].isEmpty()){
+			NUMNER_OF_PARTICLES=Integer.parseInt(args[9]);
 		}
 		//end config
 	}
@@ -71,9 +73,11 @@ public class InitClassification {
 		//System.out.println("dbg");
 		
 		// Use neighborhood
-		Neighborhood neigh = new Neighborhood1D(Swarm.DEFAULT_NUMBER_OF_PARTICLES / 5, true);
-		swarm.setNeighborhood(neigh);
-		swarm.setNeighborhoodIncrement(0.0);
+		if(lbest_opt){
+			Neighborhood neigh = new Neighborhood1D(Swarm.DEFAULT_NUMBER_OF_PARTICLES / 5, true);
+			swarm.setNeighborhood(neigh);
+			swarm.setNeighborhoodIncrement(0.0);
+		}
 		
 		// Min / Max possition
 		double[] minPos = Utils.minValues(Dataset.data);
@@ -96,7 +100,7 @@ public class InitClassification {
 		swarm.setInertia(inert);
 		swarm.setParticleIncrement(pers);
 		swarm.setGlobalIncrement(socl);
-		swarm.setVariablesUpdate(new InertiaDecrease(inertia,localFix));
+		swarm.setVariablesUpdate(new InertiaDecrease(inertia,localFix,lbest_opt));
 
 		numberOfIterations = itons;
 		
